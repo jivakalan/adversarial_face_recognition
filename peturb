@@ -1,0 +1,27 @@
+##################
+#peturb pixels in face randomly and test against vggface until classifies phelan as tom cruise 
+delta = 0.3
+
+
+mp = preprocess_image('cropmp.jpg')
+
+def peturb():
+    x = mp + np.random.uniform(-delta, delta, mp.shape)
+    return x
+
+img_representation_tc = vgg_face.predict(preprocess_image('croptc.jpg'))[0,:]
+
+epsilon = 0.4
+
+for n in range(0,1009):
+    x = peturb()
+    img_representation_mp =  vgg_face.predict(x)[0,:]
+
+    cosine_similarity = findCosineDistance(img_representation_tc, img_representation_mp)
+ 
+    if(cosine_similarity < epsilon):
+     print("verified... they are same person")
+    else:
+     print("unverified! they are not same person!")
+     print(n)
+   

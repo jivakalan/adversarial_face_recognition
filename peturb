@@ -1,7 +1,5 @@
 ##################
-#peturb pixels in face randomly and test against vggface until classifies phelan as tom cruise 
-delta = 0.3
-epsilon = 0.4
+#peturb pixels in face randomly and test against vggface until classifies phelan as tom cruise
 
 img1 = 'cropmp.jpg'
 img2 ='croptc.jpg'
